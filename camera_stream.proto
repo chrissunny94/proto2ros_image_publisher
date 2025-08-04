@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package camstream;
+
+// Message definition for image
+message WebcamImage {
+  uint32 width = 1;
+  uint32 height = 2;
+  string encoding = 3;
+  bytes data = 4;
+}
+
+// gRPC service definition
+service CameraStream {
+  rpc StreamWebcam(Empty) returns (stream WebcamImage);
+}
+
+message Empty {}
